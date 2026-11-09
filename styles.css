@@ -167,7 +167,7 @@ button {
 .wall-bottom,
 .investigation-caption,
 .stage-counter,
-.stage-assurance,
+.stage-copy .stage-assurance,
 .visual-toolbar,
 .tree-root > span,
 .trail-label,
@@ -262,7 +262,7 @@ button {
 }
 .hero h1 {
   max-width: 730px;
-  font-size: clamp(70px, 8.6vw, 119px);
+  font-size: clamp(62px, 7.3vw, 104px);
   font-weight: 540;
   line-height: 0.92;
   letter-spacing: -0.083em;
@@ -574,7 +574,7 @@ h2 em {
   right: 15px;
   bottom: 14px;
   color: rgba(239, 108, 83, 0.52);
-  font: 10px var(--mono);
+  font: 11px var(--mono);
   letter-spacing: 0.12em;
   transform: rotate(-8deg);
 }
@@ -621,7 +621,7 @@ h2 em {
   align-items: center;
   gap: 7px;
   color: #b8c5ad;
-  font: 10px var(--mono);
+  font: 11px var(--mono);
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
@@ -1120,7 +1120,7 @@ h2 em {
 .stage-copy > p:not(.stage-assurance) {
   margin-top: 14px;
   color: #a5a89f;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 .stage-copy .stage-assurance {
@@ -1515,13 +1515,15 @@ h2 em {
 }
 .mini-citation {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 8px;
   margin-top: 10px;
   padding: 8px;
   border: 1px solid rgba(224, 224, 210, 0.12);
   color: #bdc0b5;
-  font: 10px var(--mono);
+  font: 11px var(--mono);
+  overflow-wrap: anywhere;
 }
 .mini-citation > b {
   color: var(--red-light);
@@ -1753,7 +1755,7 @@ h2 em {
 .scenario > p {
   margin-top: 19px;
   color: #949990;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
 }
 .scenario:nth-child(2) {
@@ -2029,13 +2031,13 @@ h2 em {
 }
 .privacy-facts h3 {
   color: #e3e1d8;
-  font: 11px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: 0.07em;
 }
 .privacy-facts p {
   margin-top: 8px;
   color: #a1a59c;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.65;
 }
 .privacy-note {
@@ -2295,6 +2297,94 @@ h2 em {
   font-style: normal;
 }
 
+.hero-description > .hero-facts {
+  font-size: 11px;
+}
+.hero-description > .tagline {
+  font-size: 17px;
+}
+.section-index,
+.stage-counter,
+.stage-assurance,
+.answer-question,
+.answer-note h2,
+.answer-foot,
+.evidence-caption,
+.hero-bottom,
+.investigation-heading,
+.wall-bottom,
+.margin-mark,
+.footer-case,
+.speech-trace > span {
+  display: none;
+}
+.investigation-caption {
+  font-size: 12px;
+}
+.stage-controls {
+  font-size: 11px;
+}
+.answer-evidence b {
+  font-size: 11px;
+}
+.understanding-node > span,
+.understanding-node > small,
+.filetype,
+.map-node > span,
+.map-node > small,
+.scenario-index {
+  font-size: 11px;
+}
+.tree-root > span {
+  display: none;
+}
+.footer-links a {
+  font-size: 11px;
+}
+
+@media (min-width: 701px) {
+  :is(
+    .case-number,
+    .hero-facts,
+    .walkthrough-disclaimer,
+    .meeting-meta,
+    .speech-trace,
+    .section-index,
+    .artifact > span,
+    .artifact > small,
+    .understanding-node > span,
+    .understanding-node > small,
+    .stage-counter,
+    .stage-assurance,
+    .visual-toolbar,
+    .tree-root > span,
+    .tree-file code,
+    .trail-label,
+    .trail-row > span,
+    .trail-row code,
+    .index-stamp,
+    .map-node > span,
+    .map-node > small,
+    .map-cite,
+    .stage-controls,
+    .equation-number,
+    .privacy-note,
+    .machine-head small,
+    .machine-item > i,
+    .machine-item > b,
+    .boundary-links > p,
+    .boundary-provider > span,
+    .boundary-provider > small,
+    .privacy-facts article > span,
+    .footer-meta,
+    .signup-form label,
+    .signup-note,
+    .form-status
+  ) {
+    font-size: 11px;
+  }
+}
+
 @media (min-width: 1500px) {
   .hero {
     padding-top: 53px;
@@ -2453,11 +2543,7 @@ h2 em {
   }
   .eyebrow {
     gap: 8px;
-    font-size: 10px;
-  }
-  .case-number {
-    font-size: 10px;
-    text-align: right;
+    font-size: 11px;
   }
   .hero-copy {
     gap: 23px;
@@ -2470,8 +2556,15 @@ h2 em {
   .hero-description > p {
     font-size: 14px;
   }
+  .hero-description > .hero-facts {
+    font-size: 11px;
+  }
+  .hero-description > .tagline {
+    font-size: 16px;
+  }
   .hero-description .answer-promise {
-    font-size: 17px;
+    margin-top: 16px;
+    font-size: 16px;
   }
   .hero-actions {
     gap: 16px;
@@ -2481,7 +2574,7 @@ h2 em {
     padding-inline: 14px;
   }
   .hero-facts {
-    font-size: 10px;
+    font-size: 11px;
   }
   .tagline {
     font-size: 16px;
@@ -2500,7 +2593,7 @@ h2 em {
     font-size: 11px;
   }
   .walkthrough-title {
-    font-size: 10px;
+    font-size: 11px;
   }
   .walkthrough-scene {
     display: flex;
@@ -2528,7 +2621,7 @@ h2 em {
     padding: 20px 17px 18px;
   }
   .meeting-meta {
-    font-size: 10px;
+    font-size: 11px;
   }
   .opening-quote {
     height: 40px;
@@ -2540,6 +2633,9 @@ h2 em {
   }
   .speech-trace {
     margin-top: 17px;
+  }
+  .speech-trace > span {
+    font-size: 11px;
   }
   .answer-note {
     width: min(100%, 550px);
@@ -2559,34 +2655,17 @@ h2 em {
     padding-inline: 7px;
   }
   .answer-evidence code {
-    font-size: 10px;
-  }
-  .answer-foot {
-    align-items: start;
-    font-size: 10px;
-    line-height: 1.6;
-  }
-  .evidence-caption {
-    right: auto;
-    bottom: 16px;
-    left: 16px;
-    gap: 7px;
-    font-size: 10px;
-  }
-  .evidence-caption > i {
-    width: 15px;
+    font-size: 11px;
   }
   .walkthrough-disclaimer {
-    font-size: 10px;
+    font-size: 11px;
     text-align: left;
   }
-  .hero-bottom {
-    flex-wrap: wrap;
-    gap: 7px;
-    font-size: 10px;
+  .investigation-caption {
+    display: none;
   }
-  .hero-bottom > i {
-    width: 13px;
+  .stage-controls {
+    font-size: 11px;
   }
   .problem {
     padding-top: 82px;
@@ -2596,10 +2675,11 @@ h2 em {
     align-items: flex-start;
   }
   .section-topline .eyebrow {
-    max-width: 70%;
+    max-width: 100%;
   }
+  .case-number,
   .section-index {
-    font-size: 10px;
+    display: none;
   }
   .problem-heading {
     gap: 23px;
@@ -2614,13 +2694,13 @@ h2 em {
     font-size: clamp(39px, 9.5vw, 58px);
   }
   .problem-copy > p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .investigation {
     margin-top: 38px;
   }
   .investigation-heading {
-    font-size: 10px;
+    font-size: 11px;
   }
   .evidence-wall {
     display: flex;
@@ -2643,11 +2723,13 @@ h2 em {
     transform: none;
   }
   .artifact > b {
-    font-size: 13px;
+    font-size: 14px;
   }
-  .artifact > span,
+  .artifact > span {
+    font-size: 11px;
+  }
   .artifact > small {
-    font-size: 10px;
+    display: none;
   }
   .artifact-commit,
   .artifact-deploy {
@@ -2676,9 +2758,6 @@ h2 em {
     margin-top: 9px;
     font-size: 10px;
   }
-  .investigation-caption {
-    font-size: 10px;
-  }
   .problem-outro {
     margin-top: 32px;
     font-size: 27px;
@@ -2705,7 +2784,7 @@ h2 em {
     padding: 6px 9px;
   }
   .stage-tabs button > span {
-    font-size: 10px;
+    font-size: 11px;
   }
   .stage-tabs button > b {
     font-size: 13px;
@@ -2725,7 +2804,7 @@ h2 em {
     font-size: 27px;
   }
   .stage-copy > p:not(.stage-assurance) {
-    font-size: 13px;
+    font-size: 14px;
   }
   .stage-visual {
     min-height: 350px;
@@ -2733,27 +2812,36 @@ h2 em {
   .visual-toolbar {
     min-height: 43px;
     padding-inline: 10px;
-    font-size: 10px;
+    font-size: 11px;
   }
   .local-badge {
-    font-size: 10px;
+    font-size: 11px;
+  }
+  .directory-visual .local-badge {
+    display: none;
+  }
+  .answer-visual .visual-toolbar {
+    justify-content: flex-end;
+  }
+  .answer-visual .visual-toolbar > span:first-child {
+    display: none;
   }
   .directory-map {
     min-height: 300px;
     padding: 17px 13px 42px;
   }
   .tree-root {
-    font-size: 12px;
+    font-size: 13px;
   }
   .tree-file {
     grid-template-columns: 13px 24px minmax(0, 1fr);
     gap: 6px;
   }
   .tree-file > b {
-    font-size: 11px;
+    font-size: 12px;
   }
   .tree-file code {
-    font-size: 10px;
+    font-size: 11px;
   }
   .history-trail {
     gap: 6px;
@@ -2766,60 +2854,62 @@ h2 em {
     left: -18px;
   }
   .trail-row > span {
-    font-size: 10px;
+    font-size: 11px;
+  }
+  .trail-label {
+    font-size: 11px;
   }
   .trail-row code {
-    font-size: 10px;
+    font-size: 11px;
   }
   .index-stamp {
-    right: 10px;
-    bottom: 9px;
-    font-size: 10px;
+    display: none;
   }
   .knowledge-map {
-    min-height: 335px;
+    display: grid;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: 8px;
+    padding: 14px 10px;
+  }
+  .knowledge-map > svg {
+    display: none;
+  }
+  .knowledge-map::before {
+    position: absolute;
+    z-index: 0;
+    top: 98px;
+    bottom: 18px;
+    left: 50%;
+    border-left: 1px dashed rgba(239, 108, 83, 0.4);
+    content: "";
   }
   .map-node {
+    position: relative;
+    inset: auto;
+    width: auto;
     min-width: 0;
-    max-width: 44%;
+    max-width: none;
     gap: 5px;
     padding: 9px;
   }
   .map-node > b {
-    font-size: 11px;
+    font-size: 12px;
   }
   .map-node > small {
     overflow: hidden;
-    font-size: 10px;
+    font-size: 11px;
     text-overflow: ellipsis;
   }
   .map-core {
-    top: 39%;
-    left: 37%;
-    max-width: 45%;
-  }
-  .map-auth {
-    top: 8%;
-    left: 4%;
-  }
-  .map-api {
-    top: 9%;
-    right: 4%;
-  }
-  .map-db {
-    bottom: 8%;
-    left: 4%;
-  }
-  .map-deploy {
-    right: 4%;
-    bottom: 8%;
+    grid-column: 1 / -1;
   }
   .map-jobs {
-    top: 2%;
-    left: 39%;
+    grid-column: 1 / -1;
   }
   .map-cite {
-    font-size: 10px;
+    display: none;
   }
   .cite-one {
     top: 34%;
@@ -2838,16 +2928,16 @@ h2 em {
     padding: 13px;
   }
   .heard-question > p {
-    font-size: 19px;
+    font-size: 20px;
   }
   .floating-answer {
     padding: 15px;
   }
   .floating-answer > p {
-    font-size: 13px;
+    font-size: 14px;
   }
-  .stage-controls {
-    font-size: 10px;
+  .stage-copy .stage-assurance {
+    display: none;
   }
   .difference {
     padding-top: 82px;
@@ -2864,7 +2954,7 @@ h2 em {
     padding: 0 0 117px;
   }
   .equation-source {
-    min-height: 180px;
+    min-height: 194px;
     padding: 16px 12px;
   }
   .source-project {
@@ -2894,10 +2984,11 @@ h2 em {
     font-size: 34px;
   }
   .equation-source h3 {
-    font-size: 10px;
+    font-size: 11px;
   }
   .equation-source p {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.55;
   }
   .equation-lines {
     right: 0;
@@ -2915,7 +3006,7 @@ h2 em {
     margin-top: 26px;
   }
   .difference-bottom p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .interrogations {
     padding-block: 58px 62px;
@@ -2947,6 +3038,7 @@ h2 em {
   }
   .scenario > p {
     margin-top: 10px;
+    font-size: 14px;
   }
   .scenario-outro {
     margin-top: 34px;
@@ -2969,13 +3061,13 @@ h2 em {
     margin-top: 32px;
   }
   .boundary-diagram {
-    grid-template-columns: minmax(0, 1fr) 41px minmax(110px, 0.7fr);
-    min-height: 360px;
-    gap: 0;
-    padding: 16px 9px;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 14px;
+    padding: 14px;
   }
   .boundary-machine {
-    padding: 13px 9px;
+    padding: 14px 12px;
   }
   .machine-head {
     gap: 7px;
@@ -2986,10 +3078,10 @@ h2 em {
     font-size: 15px;
   }
   .machine-head b {
-    font-size: 10px;
+    font-size: 11px;
   }
   .machine-head small {
-    font-size: 10px;
+    font-size: 11px;
   }
   .machine-item {
     grid-template-columns: 16px minmax(0, 1fr);
@@ -2997,49 +3089,61 @@ h2 em {
     min-height: 47px;
   }
   .machine-item > span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .machine-item > b {
     grid-column: 2;
-    font-size: 10px;
-  }
-  .boundary-links {
-    height: 275px;
-  }
-  .outbound {
-    padding-left: 9px;
-  }
-  .outbound b {
-    font-size: 10px;
-  }
-  .outbound small {
-    font-size: 10px;
-  }
-  .inbound {
-    right: -23px;
-    width: 23px;
-  }
-  .inbound > span {
-    left: -21px;
-    width: 102px;
-    font-size: 10px;
-  }
-  .boundary-links > p {
-    width: 132px;
-    font-size: 10px;
-  }
-  .boundary-provider {
-    min-height: 150px;
-    padding: 10px 4px;
-  }
-  .boundary-provider > span:not(.provider-orbit) {
-    font-size: 10px;
-  }
-  .boundary-provider > b {
     font-size: 11px;
   }
+  .boundary-links {
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+    gap: 10px;
+    padding: 0 2px;
+  }
+  .outbound {
+    padding-left: 12px;
+  }
+  .outbound b {
+    font-size: 12px;
+  }
+  .outbound small {
+    font-size: 12px;
+  }
+  .inbound {
+    position: relative;
+    top: auto;
+    right: auto;
+    justify-self: center;
+    width: fit-content;
+    height: auto;
+    gap: 8px;
+    background: none;
+  }
+  .inbound > i {
+    position: static;
+    flex: 0 0 auto;
+  }
+  .inbound > span {
+    position: static;
+    width: auto;
+    font-size: 11px;
+  }
+  .boundary-links > p {
+    display: none;
+  }
+  .boundary-provider {
+    min-height: 164px;
+    padding: 14px;
+  }
+  .boundary-provider > span:not(.provider-orbit) {
+    font-size: 11px;
+  }
+  .boundary-provider > b {
+    font-size: 13px;
+  }
   .boundary-provider > small {
-    font-size: 10px;
+    font-size: 11px;
   }
   .provider-orbit {
     inset: 6px;
@@ -3054,10 +3158,13 @@ h2 em {
     padding: 13px 0;
   }
   .privacy-facts p {
+    font-size: 13px;
+  }
+  .privacy-facts h3 {
     font-size: 12px;
   }
   .privacy-note {
-    font-size: 10px;
+    font-size: 11px;
   }
   .first-chapter {
     padding-block: 65px 70px;
@@ -3074,7 +3181,7 @@ h2 em {
     max-width: 550px;
   }
   .chapter-copy p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .chapter-copy > strong {
     font-size: 13px;
@@ -3099,7 +3206,11 @@ h2 em {
     font-size: clamp(43px, 10.6vw, 67px);
   }
   .signup-copy > p:not(:first-child) {
-    font-size: 13px;
+    font-size: 14px;
+  }
+  .signup-form label,
+  .signup-note {
+    font-size: 11px;
   }
   .signup-form {
     padding: 17px;
@@ -3121,14 +3232,14 @@ h2 em {
     text-align: left;
   }
   .footer-meta > span {
-    font-size: 10px;
+    font-size: 11px;
   }
   .footer-links {
     flex-wrap: wrap;
     gap: 16px;
   }
   .footer-case {
-    grid-column: 1;
+    display: none;
   }
 }
 
@@ -3136,6 +3247,10 @@ h2 em {
   html,
   body {
     min-width: 0;
+  }
+
+  .hero h1 {
+    font-size: 45px;
   }
 
   .answer-note-head {
@@ -3155,7 +3270,7 @@ h2 em {
 
   .found-state {
     gap: 5px;
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
