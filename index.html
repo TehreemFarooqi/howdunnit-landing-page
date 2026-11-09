@@ -1,94 +1,861 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111312">
-  <meta name="description" content="A free, open-source Windows meeting sidekick that helps developers explain AI-built software with answers grounded in their project.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="howdunnit — explain the code you shipped">
-  <meta property="og:description" content="For when you don't know how you dunnit. A local-first meeting sidekick for developers.">
-  <title>howdunnit — explain the code you shipped</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="howdunnit home"><span class="mark">h<span>.</span></span> howdunnit</a>
-    <nav aria-label="Main navigation"><a href="#method">How it works</a><a href="#privacy">Privacy</a><a href="#build">The build</a></nav>
-    <a class="nav-cta" href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">Project on GitHub <b aria-hidden="true">↗</b></a>
-  </header>
-  <main id="main">
-    <section class="hero wrap" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow"><i></i> CASE FILE 001 <b>/</b> THE IMPLEMENTATION IS ON TRIAL</p>
-        <h1>The code shipped.<br><em>Now explain it.</em></h1>
-        <p class="tagline">For when you don't know how you dunnit.</p>
-        <p class="intro">AI helped build the software. You're still the one on the call. Howdunnit finds answers in your project and Claude Code history, then shows you where they came from.</p>
-        <div class="actions"><a class="button" href="#build">Become an early tester <b aria-hidden="true">↗</b></a><a class="quiet-link" href="#evidence">See the evidence <b aria-hidden="true">↓</b></a></div>
-        <p class="meta">FREE <i>·</i> OPEN SOURCE <i>·</i> WINDOWS 10/11</p>
-      </div>
-      <aside class="index-note"><span class="rule"></span><p>LIVE TECHNICAL CONVERSATIONS</p><strong>Know what shipped.<br>Know where to look.</strong><small>LOCAL PROJECT · GROUNDED ANSWERS · SOURCE REFERENCES</small><span class="seal">HD<br><b>01</b></span></aside>
-    </section>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111312" />
+    <meta
+      name="description"
+      content="AI wrote it. You shipped it. Howdunnit helps you explain it, with answers grounded in your project and development history."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="howdunnit — For when you don't know how you dunnit."
+    />
+    <meta
+      property="og:description"
+      content="A local-first Windows meeting sidekick for developers building software with AI coding agents."
+    />
+    <title>howdunnit — For when you don't know how you dunnit.</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="howdunnit home">
+        <span class="brand-mark" aria-hidden="true">h<span>.</span></span>
+        <span>howdunnit</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#problem">The problem</a>
+        <a href="#product">How it works</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+      <a class="header-cta" href="#early-access"
+        >Get early access <span aria-hidden="true">↗</span></a
+      >
+    </header>
 
-    <section class="wrap" id="evidence" aria-label="Howdunnit answer example">
-      <figure class="caseboard">
-        <div class="board-head"><span><i></i> EXHIBIT A <b>/</b> A QUESTION, WITH RECEIPTS</span><small>HOWDUNNIT DESKTOP · CONCEPT</small></div>
-        <div class="flow">
-          <article class="question card">
-            <span class="micro">01 / HEARD IN THE MEETING</span><span class="quote">“</span>
-            <p>Why can’t the renderer read our API key?</p>
-            <small class="heard"><i></i><i></i><i></i><i></i> SYSTEM AUDIO · 10:42</small>
-          </article>
-          <div class="wire" aria-hidden="true"><i></i></div>
-          <article class="app" aria-label="Illustrative Howdunnit answer overlay">
-            <div class="app-head"><span class="app-brand"><i class="mini-mark">h<span>.</span></i><b>howdunnit</b><i class="divider"></i><small>howdunnit</small></span><span class="ready"><i></i> READY</span></div>
-            <div class="heard-line"><span>HEARD</span><p>“Why can’t the renderer read our API key?”</p><b><i></i> Listen</b><span class="privacy-icon" aria-label="Privacy mode">◉</span></div>
-            <div class="answer"><span class="answer-title"><i>↳</i> ANSWER <small>JUST NOW</small></span>
-              <p>The key stays in the main process. Windows encrypts it on this PC, and the renderer gets only a “set or not” status.</p>
-              <div class="refs"><div><b>S1</b><code>src/main/services/provider-context.ts</code><span>↗</span></div><div><b>S2</b><code>src/main/services/secrets.ts</code><span>↗</span></div></div>
-            </div>
-            <div class="app-foot"><span><i></i> GROUNDED IN YOUR PROJECT</span><span>Ctrl + Enter <small>to ask</small></span></div>
-          </article>
-          <div class="wire last" aria-hidden="true"><i></i></div>
-          <article class="source card">
-            <span class="micro">02 / BACK TO THE SOURCE</span><div class="file"><b>TS</b> provider-context.ts</div>
-            <div class="code"><div><span>›</span><code>apiKey:</code></div><div class="highlight"><span>›</span><code><b>getSecret</b>(id)</code></div></div>
-            <small class="receipt"><i></i> THE ANSWER HAS A PAPER TRAIL</small>
-          </article>
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-topline">
+          <span class="eyebrow"><i></i> YOUR NEXT MEETING HAS QUESTIONS.</span>
+          <span class="case-number">FIELD NOTES <b>001—HOW</b></span>
         </div>
-        <figcaption>THE QUESTION <b>→</b> THE ANSWER <b>→</b> THE CODE THAT BACKS IT UP</figcaption>
-      </figure>
-    </section>
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            AI wrote it.<br />You shipped it.<br /><em>Now explain it.</em>
+          </h1>
+          <div class="hero-description">
+            <p>
+              Your manager wants implementation at the speed of AI—and expects
+              you to explain every line like you personally wrote it.
+            </p>
+            <p>
+              Somewhere between your code, 50 commits and a mountain of Claude
+              Code conversations is the answer.
+            </p>
+            <p class="answer-promise">
+              Howdunnit finds it. While you're still in the meeting.
+            </p>
+            <p class="product-intro">
+              A live, project-aware AI meeting sidekick for developers.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#early-access"
+                >Get early access <span aria-hidden="true">↗</span></a
+              >
+              <a class="button-link" href="#demo"
+                >See how it works <span aria-hidden="true">↓</span></a
+              >
+            </div>
+            <p class="hero-facts">
+              Free &amp; open source <i>·</i> Local-first <i>·</i> Windows first
+            </p>
+            <p class="tagline">For when you don't know how you dunnit.</p>
+          </div>
+        </div>
 
-    <section class="wrap case-copy" aria-labelledby="why-title">
-      <p class="section-label"><b>02</b><i></i> WHY THIS EXISTS</p>
-      <div class="split"><h2 id="why-title">Shipping got faster.<br><em>Questions didn’t.</em></h2><div class="body-copy"><p>A client asks why the architecture changed. Someone spots a bug in the demo. Your teammate wants the backstory behind a decision.</p><p>The code is yours to own—even when an agent wrote the first draft. Howdunnit helps you find your footing, without pretending you memorized every diff.</p><small><i></i> NOT A DOC GENERATOR. A BETTER ANSWER WHEN IT’S YOUR TURN.</small></div></div>
-      <div class="questions"><article><small>EXHIBIT 01</small><h3>“Where does this flow start?”</h3><p>Get a project-grounded answer with the file it came from.</p></article><article><small>EXHIBIT 02</small><h3>“Why did we change this?”</h3><p>Search your code and Claude Code session history for the backstory.</p></article><article><small>EXHIBIT 03</small><h3>“Wait, where’s that handled?”</h3><p>Ask by voice in a meeting or type when you need a quieter assist.</p></article></div>
-    </section>
+        <div class="walkthrough wrap" id="demo">
+          <div class="walkthrough-heading">
+            <span class="walkthrough-label"
+              ><i></i> Illustrative walkthrough</span
+            >
+            <span class="walkthrough-title"
+              >CASE #001 — THE UNEXPECTED QUESTION</span
+            >
+          </div>
+          <div class="walkthrough-scene">
+            <svg
+              class="evidence-route"
+              viewBox="0 0 1200 460"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                class="route-shadow"
+                d="M142 191 C 295 191, 308 99, 434 99 S 530 201, 682 201 S 882 329, 1054 329"
+              />
+              <path
+                class="route-line"
+                d="M142 191 C 295 191, 308 99, 434 99 S 530 201, 682 201 S 882 329, 1054 329"
+              />
+              <circle cx="142" cy="191" r="5" />
+              <circle cx="682" cy="201" r="5" />
+              <circle cx="1054" cy="329" r="5" />
+            </svg>
+            <article class="meeting-question">
+              <div class="meeting-meta">
+                <span class="live-pip"><i></i> IN THE MEETING</span>
+                <span>ENGINEERING LEAD</span>
+              </div>
+              <span class="opening-quote" aria-hidden="true">“</span>
+              <p>Hang on. Why can't the renderer access our API keys?</p>
+              <div
+                class="speech-trace"
+                aria-label="Audio waveform illustration"
+              >
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i>
+                <span>SYSTEM AUDIO</span>
+              </div>
+              <span class="margin-mark" aria-hidden="true">ASKED</span>
+            </article>
 
-    <section class="wrap method" id="method">
-      <p class="section-label"><b>03</b><i></i> THE METHOD</p>
-      <div class="method-heading"><h2>Find your footing.<br><em>Then show your work.</em></h2><p>No bot barging into the call. Just a small desktop sidekick, ready when you are.</p></div>
-      <div class="steps"><article><small>01</small><span class="step-icon folder"></span><h3>Point it at a project</h3><p>Howdunnit indexes your code and Claude Code history on your PC. No model tokens just to build the index.</p></article><article><small>02</small><span class="step-icon wave"><i></i><i></i><i></i><i></i><i></i></span><h3>Ask in the moment</h3><p>Type a question, or listen to system audio during a meeting after you give consent.</p></article><article><small>03</small><span class="step-icon source-icon">S1</span><h3>Follow the evidence</h3><p>Get a concise answer linked to the code or history behind it. If it can’t find support, it says so.</p></article></div>
-    </section>
+            <article class="answer-note">
+              <div class="answer-note-head">
+                <span class="brand brand-small"
+                  ><span class="brand-mark" aria-hidden="true"
+                    >h<span>.</span></span
+                  >
+                  howdunnit</span
+                >
+                <span class="found-state"><i></i> ANSWER FOUND</span>
+              </div>
+              <p class="answer-question">
+                Why can't the renderer access our API keys?
+              </p>
+              <h2>HOWDUNNIT <span>/</span> ANSWER FOUND</h2>
+              <p class="answer-copy">
+                The API key stays in Electron's main process. It's encrypted
+                using Windows-backed storage, and the renderer never receives
+                the secret directly.
+              </p>
+              <div
+                class="answer-evidence"
+                aria-label="Illustrative project references"
+              >
+                <span><b>01</b><code>provider-context.ts</code><i>↗</i></span>
+                <span><b>02</b><code>secrets.ts</code><i>↗</i></span>
+                <span><b>03</b><code>IPC boundary</code><i>↗</i></span>
+              </div>
+              <span class="answer-foot"
+                ><i></i> ILLUSTRATIVE EXAMPLE · SOURCES VARY BY PROJECT</span
+              >
+            </article>
+            <div class="evidence-caption" aria-hidden="true">
+              <span>QUESTION</span><i></i><span>ANSWER</span><i></i
+              ><span>PROJECT EVIDENCE</span>
+            </div>
+          </div>
+          <p class="walkthrough-disclaimer">
+            Illustrative scenario, not a product recording.
+          </p>
+        </div>
+        <div class="hero-bottom wrap" aria-hidden="true">
+          <span>PROJECT-AWARE</span><i></i><span>MEETING-READY</span><i></i
+          ><span>TRACEABLE ANSWERS</span>
+        </div>
+      </section>
 
-    <section class="privacy-band" id="privacy">
-      <div class="wrap privacy">
-        <p class="section-label"><b>04</b><i></i> NO HAND-WAVING</p>
-        <div class="method-heading"><h2>Local-first.<br><em>Not a black box.</em></h2><p>Here’s what stays on your PC—and what leaves it when you use the app.</p></div>
-        <div class="privacy-cards"><article><small>STAYS HERE <b>01</b></small><h3>Your project index</h3><p>Your code and Claude Code history are indexed and kept on your PC. The index is built locally.</p></article><article><small>WHEN YOU ASK <b>02</b></small><h3>Your question, with context</h3><p>Your question and a few redacted code or history excerpts go to the AI provider you choose. During a meeting, recent heard turns go too.</p></article><article><small>WHEN YOU LISTEN <b>03</b></small><h3>Audio, only while on</h3><p>After consent, system audio goes to Deepgram for speech-to-text while a meeting is active. The transcript stays in memory and is dropped when it ends.</p></article></div>
-        <div class="privacy-foot"><span><b>No account.</b> No telemetry. API keys encrypted by Windows.</span><span>With local Ollama as your only provider, questions stay on your PC. <a href="https://github.com/TehreemFarooqi/howdunnit/blob/main/docs/privacy-and-consent.md" target="_blank" rel="noreferrer">Read the full privacy details ↗</a></span></div>
-        <p class="consent">Meeting audio is a recording. Tell people you’re transcribing and follow your local consent laws.</p>
+      <section
+        class="problem section-wrap"
+        id="problem"
+        aria-labelledby="problem-title"
+      >
+        <div class="section-topline">
+          <span class="eyebrow"><i></i> THE PRICE OF SHIPPING FAST</span>
+          <span class="section-index">01 <i>/</i> THE GAP</span>
+        </div>
+        <div class="problem-heading">
+          <h2 id="problem-title">
+            Your codebase has a memory.<br /><em
+              >Unfortunately, it isn't yours.</em
+            >
+          </h2>
+          <div class="problem-copy">
+            <p>
+              You prompted. Claude coded. You reviewed, fixed, shipped and moved
+              on.
+            </p>
+            <p>
+              Now someone's asking why you chose that architecture, what broke
+              during deployment, or which service handles a specific edge case.
+            </p>
+            <p>
+              The information exists. It's just scattered across your
+              repository, Git history and conversations with your coding agent.
+            </p>
+            <p class="aside-note">
+              And apparently, “I think Claude did something there” isn't the
+              answer your manager was looking for.
+            </p>
+          </div>
+        </div>
+
+        <div class="investigation" data-investigation>
+          <div class="investigation-heading">
+            <span>INCOMING EVIDENCE</span>
+            <span>PROJECT <b>/</b> HOWDUNNIT</span>
+          </div>
+          <div
+            class="evidence-wall"
+            aria-label="Fragmented evidence converging on project understanding"
+          >
+            <svg
+              class="wall-lines"
+              viewBox="0 0 1000 500"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path d="M125 95 C 220 95 330 228 490 245" />
+              <path d="M500 93 C 495 143 495 188 495 245" />
+              <path d="M861 100 C 775 112 700 194 510 248" />
+              <path d="M175 383 C 254 352 373 293 488 257" />
+              <path d="M852 381 C 748 345 656 295 512 258" />
+              <path d="M495 260 L495 427" />
+            </svg>
+            <div class="artifact artifact-auth">
+              <span>FILE <i>01</i></span
+              ><b>auth.ts</b><small>src/main/auth.ts</small>
+            </div>
+            <div class="artifact artifact-commit">
+              <span>GIT COMMIT <i>02</i></span
+              ><b>fix token refresh</b><small>4f2c… · auth/session</small>
+            </div>
+            <div class="artifact artifact-session">
+              <span>CLAUDE CODE SESSION <i>03</i></span
+              ><b>debugging login failures</b
+              ><small>~/.claude/projects/…</small>
+            </div>
+            <div class="artifact artifact-deploy">
+              <span>CONFIG <i>04</i></span
+              ><b>deployment.yaml</b><small>infra/production</small>
+            </div>
+            <div class="artifact artifact-worker">
+              <span>FILE <i>05</i></span
+              ><b>worker.ts</b><small>src/jobs/worker.ts</small>
+            </div>
+            <div class="understanding-node">
+              <span>LOCAL PROJECT INDEX</span>
+              <b>PROJECT<br />UNDERSTANDING</b>
+              <small>CODE <i>·</i> HISTORY <i>·</i> LINKS</small>
+            </div>
+            <div class="wall-bottom">
+              <span>SCATTERED</span><i></i><span>CONNECTED</span>
+            </div>
+          </div>
+          <p class="investigation-caption">
+            <span>THE WORK HAPPENED.</span> THE CONTEXT GOT AWAY.
+          </p>
+        </div>
+        <p class="problem-outro">
+          Howdunnit connects the dots <em>before</em> someone asks.
+        </p>
+      </section>
+
+      <section class="product" id="product" aria-labelledby="product-title">
+        <div class="section-wrap">
+          <div class="section-topline">
+            <span class="eyebrow"><i></i> HOW THE CASE GETS SOLVED</span>
+            <span class="section-index">02 <i>/</i> THE METHOD</span>
+          </div>
+          <div class="product-heading">
+            <h2 id="product-title">
+              Your repo knows <em>what.</em><br />Your coding history knows
+              <em>why.</em>
+            </h2>
+            <p>Howdunnit brings both to the meeting.</p>
+          </div>
+
+          <div
+            class="stage-tabs"
+            role="tablist"
+            aria-label="How Howdunnit works"
+          >
+            <button
+              type="button"
+              role="tab"
+              id="tab-connect"
+              aria-selected="true"
+              aria-controls="stage-connect"
+              tabindex="0"
+              data-stage="connect"
+            >
+              <span>STAGE 01</span><b>Connect</b><i aria-hidden="true">↗</i>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="tab-understand"
+              aria-selected="false"
+              aria-controls="stage-understand"
+              tabindex="-1"
+              data-stage="understand"
+            >
+              <span>STAGE 02</span><b>Understand</b><i aria-hidden="true">↗</i>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="tab-answer"
+              aria-selected="false"
+              aria-controls="stage-answer"
+              tabindex="-1"
+              data-stage="answer"
+            >
+              <span>STAGE 03</span><b>Answer</b><i aria-hidden="true">↗</i>
+            </button>
+          </div>
+
+          <article
+            class="stage-panel"
+            id="stage-connect"
+            role="tabpanel"
+            aria-labelledby="tab-connect"
+            data-panel="connect"
+          >
+            <div class="stage-copy">
+              <span class="stage-counter">01 <i>/</i> CONNECT</span>
+              <h3>Point it at your project.</h3>
+              <p>
+                Choose a local repository or project folder. Howdunnit indexes
+                eligible code, configuration, Git history and available Claude
+                Code conversations on your computer.
+              </p>
+              <p class="stage-assurance">
+                <i></i> The index is built and kept locally.
+              </p>
+            </div>
+            <div
+              class="stage-visual directory-visual"
+              aria-label="Illustrative local project files and history"
+            >
+              <div class="visual-toolbar">
+                <span>LOCAL PROJECT <b>/</b> HOWDUNNIT</span
+                ><span class="local-badge"><i></i> ON THIS PC</span>
+              </div>
+              <div class="directory-map">
+                <div class="tree">
+                  <div class="tree-root">
+                    <i>▾</i><b>howdunnit</b><span>project folder</span>
+                  </div>
+                  <div class="tree-file">
+                    <i>├</i><span class="filetype ts">TS</span
+                    ><code>src/main/</code><b>secrets.ts</b>
+                  </div>
+                  <div class="tree-file">
+                    <i>├</i><span class="filetype yaml">Y</span
+                    ><code>config/</code><b>electron.vite.config.ts</b>
+                  </div>
+                  <div class="tree-file">
+                    <i>└</i><span class="filetype md">MD</span><code>docs/</code
+                    ><b>architecture.md</b>
+                  </div>
+                </div>
+                <div class="history-trail">
+                  <span class="trail-label">HISTORY FOUND</span>
+                  <div class="trail-row">
+                    <i></i><span>commit</span
+                    ><code>fix: keep secrets in main</code>
+                  </div>
+                  <div class="trail-row">
+                    <i></i><span>session</span
+                    ><code>secrets and IPC boundary</code>
+                  </div>
+                  <div class="trail-row">
+                    <i></i><span>commit</span><code>encrypt key storage</code>
+                  </div>
+                </div>
+                <div class="index-stamp">
+                  <span>INDEXED</span><b>LOCAL</b><i>NO AI CALL</i>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="stage-panel"
+            id="stage-understand"
+            role="tabpanel"
+            aria-labelledby="tab-understand"
+            data-panel="understand"
+            hidden
+          >
+            <div class="stage-copy">
+              <span class="stage-counter">02 <i>/</i> UNDERSTAND</span>
+              <h3>It does the homework before the meeting.</h3>
+              <p>
+                With your permission, Howdunnit prepares project understanding
+                around architecture, features and workflows, with links back to
+                source. Development history adds context where the evidence is
+                available.
+              </p>
+              <p class="stage-assurance">
+                <i></i> Notes are optional. Source references matter.
+              </p>
+            </div>
+            <div
+              class="stage-visual knowledge-visual"
+              aria-label="Illustrative map of related project areas"
+            >
+              <div class="visual-toolbar">
+                <span>PROJECT UNDERSTANDING <b>/</b> SOURCE-LINKED</span
+                ><span class="local-badge"><i></i> ILLUSTRATIVE</span>
+              </div>
+              <div class="knowledge-map">
+                <svg
+                  viewBox="0 0 700 370"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M350 185 L165 87 M350 185 L528 88 M350 185 L160 285 M350 185 L535 283 M350 185 L350 48"
+                  />
+                  <path
+                    d="M165 87 L350 48 L528 88 M160 285 L350 310 L535 283"
+                  />
+                </svg>
+                <div class="map-node map-core">
+                  <span>PROJECT MAP</span><b>How it<br />fits together</b>
+                </div>
+                <div class="map-node map-auth">
+                  <i></i><b>Authentication</b><small>src/main/auth.ts</small>
+                </div>
+                <div class="map-node map-api">
+                  <i></i><b>API</b><small>src/main/ipc/</small>
+                </div>
+                <div class="map-node map-db">
+                  <i></i><b>Database</b><small>src/main/brain/index/</small>
+                </div>
+                <div class="map-node map-deploy">
+                  <i></i><b>Deployment</b><small>electron-builder</small>
+                </div>
+                <div class="map-node map-jobs">
+                  <i></i><b>Background jobs</b><small>services/</small>
+                </div>
+                <span class="map-cite cite-one">[S1] SOURCE</span
+                ><span class="map-cite cite-two">[S2] SOURCE</span>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="stage-panel"
+            id="stage-answer"
+            role="tabpanel"
+            aria-labelledby="tab-answer"
+            data-panel="answer"
+            hidden
+          >
+            <div class="stage-copy">
+              <span class="stage-counter">03 <i>/</i> ANSWER</span>
+              <h3>Someone asks. You're already covered.</h3>
+              <p>
+                During a meeting, Howdunnit can listen to system audio after
+                consent. Ask for an answer with a hotkey, or type when you
+                prefer. A concise explanation appears alongside the question,
+                with project references.
+              </p>
+              <p class="stage-assurance">
+                <i></i> No digging through files while someone's waiting for you
+                to speak.
+              </p>
+            </div>
+            <div
+              class="stage-visual answer-visual"
+              aria-label="Illustrative question and answer overlay"
+            >
+              <div class="visual-toolbar">
+                <span>MEETING ASSIST <b>/</b> ILLUSTRATIVE</span
+                ><span class="local-badge"><i></i> LISTENING BY CONSENT</span>
+              </div>
+              <div class="meeting-answer-layout">
+                <div class="heard-question">
+                  <span>ENGINEERING LEAD <i>·</i> JUST NOW</span>
+                  <p>“Why does this key never reach the renderer?”</p>
+                  <div class="wave-small">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                    ><i></i><i></i>
+                  </div>
+                </div>
+                <div class="floating-answer">
+                  <span class="floating-answer-label"
+                    ><i></i> ANSWER <b>FOUND</b></span
+                  >
+                  <p>
+                    Secrets are read in the main process. The renderer gets
+                    status, not the value.
+                  </p>
+                  <div class="mini-citation">
+                    <b>[S1]</b> src/main/services/secrets.ts <i>↗</i>
+                  </div>
+                  <div class="mini-citation">
+                    <b>[S2]</b> IPC contract <i>↗</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <div class="stage-controls">
+            <span><i></i> EXAMPLE FLOW <b>·</b> NOT A PERFORMANCE CLAIM</span
+            ><span>SELECT A STAGE <b>↗</b></span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="difference section-wrap"
+        aria-labelledby="difference-title"
+      >
+        <div class="section-topline">
+          <span class="eyebrow"
+            ><i></i> NOT ANOTHER CHATBOT WITH YOUR README</span
+          >
+          <span class="section-index">03 <i>/</i> THE DIFFERENCE</span>
+        </div>
+        <h2 id="difference-title" class="difference-head">
+          A coding assistant knows your code.<br />A meeting assistant hears the
+          conversation.<br /><em>Howdunnit connects the two.</em>
+        </h2>
+        <div
+          class="evidence-equation"
+          aria-label="Project, backstory and meeting feed an explanation"
+        >
+          <div class="equation-source source-project">
+            <span class="equation-number">01</span
+            ><span class="equation-glyph">{ }</span>
+            <h3>THE PROJECT</h3>
+            <p>Code, architecture,<br />configuration</p>
+          </div>
+          <span class="equation-plus" aria-hidden="true">+</span>
+          <div class="equation-source source-history">
+            <span class="equation-number">02</span
+            ><span class="equation-glyph">↶</span>
+            <h3>THE BACKSTORY</h3>
+            <p>Claude Code sessions,<br />commits, fixes, decisions</p>
+          </div>
+          <span class="equation-plus" aria-hidden="true">+</span>
+          <div class="equation-source source-meeting">
+            <span class="equation-number">03</span
+            ><span class="equation-glyph">“</span>
+            <h3>THE MEETING</h3>
+            <p>Technical questions,<br />discussion, context</p>
+          </div>
+          <svg
+            class="equation-lines"
+            viewBox="0 0 1000 330"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M165 100 C165 230 345 180 500 260 M500 100 L500 260 M835 100 C835 230 655 180 500 260"
+            />
+            <path d="M500 260 L500 310" />
+          </svg>
+          <div class="equation-result">
+            <span>↓</span><b>HOWDUNNIT</b><i></i
+            ><strong>The explanation you need,<br />when you need it.</strong>
+          </div>
+        </div>
+        <div class="difference-bottom">
+          <p>
+            Documentation tells you what someone remembered to write down.
+            Howdunnit is built to investigate the real implementation and help
+            explain it in the middle of an actual conversation.
+          </p>
+          <p>
+            <b>It's not a coding agent.</b> It doesn't change your application.
+            It helps you defend, explain and understand the one you shipped.
+          </p>
+        </div>
+      </section>
+
+      <section class="interrogations" aria-labelledby="interrogations-title">
+        <div class="section-wrap">
+          <div class="section-topline">
+            <span class="eyebrow"><i></i> A FEW FAMILIAR INTERROGATIONS</span>
+            <span class="section-index">04 <i>/</i> THE HOT SEAT</span>
+          </div>
+          <h2 id="interrogations-title">“Quick question...”</h2>
+          <div class="scenario-list">
+            <article class="scenario scenario-manager">
+              <span class="scenario-index">01 <i>/</i> THE MANAGER</span>
+              <blockquote>
+                “Can you walk us through how authentication actually works?”
+              </blockquote>
+              <p>Sure. Right after I remember which agent implemented it.</p>
+            </article>
+            <article class="scenario scenario-client">
+              <span class="scenario-index">02 <i>/</i> THE CLIENT</span>
+              <blockquote>“What happens if this service goes down?”</blockquote>
+              <p>An excellent question to ask in front of twelve people.</p>
+            </article>
+            <article class="scenario scenario-review">
+              <span class="scenario-index"
+                >03 <i>/</i> THE ARCHITECTURE REVIEW</span
+              >
+              <blockquote>
+                “Why did we change the original approach?”
+              </blockquote>
+              <p>There's a whole development history behind that one.</p>
+            </article>
+          </div>
+          <p class="scenario-outro">
+            The question changes.<br /><em>The problem doesn't.</em>
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="privacy section-wrap"
+        id="privacy"
+        aria-labelledby="privacy-title"
+      >
+        <div class="section-topline">
+          <span class="eyebrow"
+            ><i></i> YOUR CODE. YOUR MACHINE. YOUR CALL.</span
+          >
+          <span class="section-index">05 <i>/</i> THE BOUNDARY</span>
+        </div>
+        <div class="privacy-heading">
+          <h2 id="privacy-title">
+            No mysterious backend<br /><em>investigating your repo.</em>
+          </h2>
+          <p>
+            Howdunnit is being built as a free, MIT-licensed, local-first
+            desktop app.
+          </p>
+        </div>
+        <div class="privacy-layout">
+          <div
+            class="boundary-diagram"
+            aria-label="Illustrative data flow between your PC and chosen providers"
+          >
+            <div class="boundary-machine">
+              <div class="machine-head">
+                <span class="machine-glyph">⌘</span>
+                <div><b>YOUR WINDOWS PC</b><small>LOCAL BY DEFAULT</small></div>
+              </div>
+              <div class="machine-item">
+                <i>01</i><span>Project index</span><b>STAYS HERE</b>
+              </div>
+              <div class="machine-item">
+                <i>02</i><span>Git + session history</span><b>STAYS HERE</b>
+              </div>
+              <div class="machine-item">
+                <i>03</i><span>Encrypted API keys</span><b>STAYS HERE</b>
+              </div>
+              <div class="machine-item">
+                <i>04</i><span>Meeting transcript</span><b>MEMORY ONLY</b>
+              </div>
+            </div>
+            <div class="boundary-links">
+              <span class="outbound outbound-model"
+                ><i></i><b>Chosen AI provider</b
+                ><small>Question + selected redacted context</small></span
+              >
+              <span class="outbound outbound-audio"
+                ><i></i><b>Configured transcription provider</b
+                ><small>System audio while listening is enabled</small></span
+              >
+              <span class="inbound"
+                ><i></i><span>Selected response + references</span></span
+              >
+              <p>
+                NETWORK FLOWS ARE USER-CONFIGURED <i>·</i> NO HOWDUNNIT HOSTED
+                BACKEND
+              </p>
+            </div>
+            <div class="boundary-provider">
+              <span class="provider-orbit" aria-hidden="true"
+                ><i></i><i></i
+              ></span>
+              <span>YOUR CHOSEN PROVIDERS</span>
+              <b>AI MODEL<br /><i>+</i> SPEECH-TO-TEXT</b>
+              <small>Only the data needed for the request</small>
+            </div>
+          </div>
+          <div class="privacy-facts">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>LOCAL PROJECT INDEX</h3>
+                <p>
+                  Your repository and available development history are indexed
+                  and stored locally.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>BRING YOUR OWN AI</h3>
+                <p>
+                  Choose a supported model provider and use your own API
+                  credentials.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>NO MANDATORY ACCOUNT</h3>
+                <p>No Howdunnit-hosted backend or account required.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>KNOW WHAT LEAVES</h3>
+                <p>
+                  Selected redacted project information and questions can go to
+                  your chosen cloud AI provider. Meeting audio goes to the
+                  configured transcription provider while listening is enabled.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>05</span>
+              <div>
+                <h3>THE RECEIPTS MATTER</h3>
+                <p>
+                  Answers can show supporting project references. If evidence is
+                  missing, Howdunnit should say so.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="privacy-note">
+          Meeting audio can include other people. Get consent before
+          transcribing, and follow the rules where you are.
+        </p>
+      </section>
+
+      <section class="first-chapter" aria-labelledby="chapter-title">
+        <div class="section-wrap chapter-layout">
+          <div>
+            <p class="eyebrow"><i></i> CASE STATUS: IN PROGRESS</p>
+            <h2 id="chapter-title">
+              We're building<br /><em>this in the open.</em>
+            </h2>
+          </div>
+          <div class="chapter-copy">
+            <p>
+              Starting with a Windows desktop release, project understanding,
+              Claude Code history and live technical meeting assistance.
+            </p>
+            <p>
+              There is more to investigate: richer project understanding, more
+              coding-agent histories, better conversation following and deeper
+              preparation as discussions evolve.
+            </p>
+            <p>
+              But first, we're getting the core experience into developers'
+              hands.
+            </p>
+            <strong
+              >Free. Open source. Built for the people who actually ship the
+              code.</strong
+            >
+          </div>
+          <span class="chapter-stamp" aria-hidden="true"
+            >FIRST<br /><b>ALPHA</b></span
+          >
+        </div>
+      </section>
+
+      <section
+        class="early-access section-wrap"
+        id="early-access"
+        aria-labelledby="signup-title"
+      >
+        <div class="section-topline">
+          <span class="eyebrow"><i></i> THE FIRST CHAPTER</span>
+          <span class="section-index">06 <i>/</i> EARLY ACCESS</span>
+        </div>
+        <div class="signup-layout">
+          <div class="signup-copy">
+            <h2 id="signup-title">
+              Next time they ask,<br /><em>have the answer.</em>
+            </h2>
+            <p>
+              You built it. You shipped it. You shouldn't need a forensic
+              investigation in the middle of a meeting to explain it.
+            </p>
+            <p class="signup-prompt">Get early access to Howdunnit.</p>
+            <p class="signup-note">
+              Windows alpha coming soon. Occasional launch updates. No spam.
+            </p>
+          </div>
+          <form class="signup-form" data-signup-endpoint="" novalidate>
+            <label for="email">YOUR EMAIL ADDRESS</label>
+            <div class="signup-row">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@yourteam.dev"
+                required
+              />
+              <button type="submit">
+                Notify me <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <label class="question-label" for="caught-off-guard"
+              >OPTIONAL <span>·</span> WHAT CAUGHT YOU OFF GUARD?</label
+            >
+            <textarea
+              id="caught-off-guard"
+              name="surprise"
+              rows="2"
+              placeholder="What's the last question about your own code that caught you off guard?"
+            ></textarea>
+            <p class="form-privacy-note">
+              Please leave out source code and confidential project details.
+            </p>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <a class="brand" href="#top"
+          ><span class="brand-mark" aria-hidden="true">h<span>.</span></span>
+          howdunnit</a
+        >
+        <p>For when you don't know how you dunnit.</p>
       </div>
-    </section>
-
-    <section class="wrap final" id="build">
-      <p class="section-label"><b>05</b><i></i> THE NEXT CHAPTER</p>
-      <div class="final-layout"><div><small class="alpha"><i></i> PRE-ALPHA · BUILT IN THE OPEN</small><h2>Help us work<br><em>the case.</em></h2></div><div class="final-copy"><p>The first public Windows build is in progress. Follow along on GitHub and be there when the first testers get their hands on it.</p><a class="button" href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">Become an early tester <b aria-hidden="true">↗</b></a><small>FREE · OPEN SOURCE · FOLLOW THE BUILD</small></div></div>
-      <span class="open-stamp">CASE<br><b>OPEN</b></span>
-    </section>
-  </main>
-  <footer class="wrap footer"><a class="brand" href="#top"><span class="mark">h<span>.</span></span> howdunnit</a><p>For when you don't know how you dunnit.</p><div><a href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://github.com/TehreemFarooqi/howdunnit/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT license ↗</a></div><small>© 2026 HOWDUNNIT CONTRIBUTORS</small></footer>
-</body>
+      <div class="footer-meta">
+        <span>Free <i>·</i> MIT licensed <i>·</i> Windows first</span>
+        <div class="footer-links">
+          <a href="#privacy">Privacy</a>
+          <a
+            href="https://github.com/TehreemFarooqi/howdunnit-landing-page"
+            target="_blank"
+            rel="noreferrer"
+            >Website source <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+      <span class="footer-case">CASE FILE 001 <i>·</i> OPEN</span>
+    </footer>
+  </body>
 </html>
