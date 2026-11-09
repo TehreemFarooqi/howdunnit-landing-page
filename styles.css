@@ -199,7 +199,7 @@ button {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 43px 0 34px;
+  padding: 43px max(44px, calc((100% - 1240px) / 2)) 34px;
 }
 .hero::before {
   position: absolute;
@@ -2048,6 +2048,7 @@ h2 em {
 .first-chapter {
   position: relative;
   overflow: hidden;
+  overflow: hidden;
   padding-block: 94px 100px;
   border-block: 1px solid rgba(224, 224, 210, 0.1);
   background: #171a18;
@@ -2445,7 +2446,7 @@ h2 em {
     font-size: 12px;
   }
   .hero {
-    padding-top: 31px;
+    padding: 31px 19px 34px;
   }
   .hero-topline {
     align-items: start;
@@ -3128,6 +3129,33 @@ h2 em {
   }
   .footer-case {
     grid-column: 1;
+  }
+}
+
+@media (max-width: 340px) {
+  html,
+  body {
+    min-width: 0;
+  }
+
+  .answer-note-head {
+    gap: 7px;
+  }
+
+  .brand-small {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .brand-small .brand-mark {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .found-state {
+    gap: 5px;
+    font-size: 9px;
   }
 }
 
