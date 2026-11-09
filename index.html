@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111312">
+  <meta name="description" content="A free, open-source Windows meeting sidekick that helps developers explain AI-built software with answers grounded in their project.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="howdunnit — explain the code you shipped">
+  <meta property="og:description" content="For when you don't know how you dunnit. A local-first meeting sidekick for developers.">
+  <title>howdunnit — explain the code you shipped</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="howdunnit home"><span class="mark">h<span>.</span></span> howdunnit</a>
+    <nav aria-label="Main navigation"><a href="#method">How it works</a><a href="#privacy">Privacy</a><a href="#build">The build</a></nav>
+    <a class="nav-cta" href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">Project on GitHub <b aria-hidden="true">↗</b></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><i></i> CASE FILE 001 <b>/</b> THE IMPLEMENTATION IS ON TRIAL</p>
+        <h1>The code shipped.<br><em>Now explain it.</em></h1>
+        <p class="tagline">For when you don't know how you dunnit.</p>
+        <p class="intro">AI helped build the software. You're still the one on the call. Howdunnit finds answers in your project and Claude Code history, then shows you where they came from.</p>
+        <div class="actions"><a class="button" href="#build">Become an early tester <b aria-hidden="true">↗</b></a><a class="quiet-link" href="#evidence">See the evidence <b aria-hidden="true">↓</b></a></div>
+        <p class="meta">FREE <i>·</i> OPEN SOURCE <i>·</i> WINDOWS 10/11</p>
+      </div>
+      <aside class="index-note"><span class="rule"></span><p>LIVE TECHNICAL CONVERSATIONS</p><strong>Know what shipped.<br>Know where to look.</strong><small>LOCAL PROJECT · GROUNDED ANSWERS · SOURCE REFERENCES</small><span class="seal">HD<br><b>01</b></span></aside>
+    </section>
+
+    <section class="wrap" id="evidence" aria-label="Howdunnit answer example">
+      <figure class="caseboard">
+        <div class="board-head"><span><i></i> EXHIBIT A <b>/</b> A QUESTION, WITH RECEIPTS</span><small>HOWDUNNIT DESKTOP · CONCEPT</small></div>
+        <div class="flow">
+          <article class="question card">
+            <span class="micro">01 / HEARD IN THE MEETING</span><span class="quote">“</span>
+            <p>Why can’t the renderer read our API key?</p>
+            <small class="heard"><i></i><i></i><i></i><i></i> SYSTEM AUDIO · 10:42</small>
+          </article>
+          <div class="wire" aria-hidden="true"><i></i></div>
+          <article class="app" aria-label="Illustrative Howdunnit answer overlay">
+            <div class="app-head"><span class="app-brand"><i class="mini-mark">h<span>.</span></i><b>howdunnit</b><i class="divider"></i><small>howdunnit</small></span><span class="ready"><i></i> READY</span></div>
+            <div class="heard-line"><span>HEARD</span><p>“Why can’t the renderer read our API key?”</p><b><i></i> Listen</b><span class="privacy-icon" aria-label="Privacy mode">◉</span></div>
+            <div class="answer"><span class="answer-title"><i>↳</i> ANSWER <small>JUST NOW</small></span>
+              <p>The key stays in the main process. Windows encrypts it on this PC, and the renderer gets only a “set or not” status.</p>
+              <div class="refs"><div><b>S1</b><code>src/main/services/provider-context.ts</code><span>↗</span></div><div><b>S2</b><code>src/main/services/secrets.ts</code><span>↗</span></div></div>
+            </div>
+            <div class="app-foot"><span><i></i> GROUNDED IN YOUR PROJECT</span><span>Ctrl + Enter <small>to ask</small></span></div>
+          </article>
+          <div class="wire last" aria-hidden="true"><i></i></div>
+          <article class="source card">
+            <span class="micro">02 / BACK TO THE SOURCE</span><div class="file"><b>TS</b> provider-context.ts</div>
+            <div class="code"><div><span>›</span><code>apiKey:</code></div><div class="highlight"><span>›</span><code><b>getSecret</b>(id)</code></div></div>
+            <small class="receipt"><i></i> THE ANSWER HAS A PAPER TRAIL</small>
+          </article>
+        </div>
+        <figcaption>THE QUESTION <b>→</b> THE ANSWER <b>→</b> THE CODE THAT BACKS IT UP</figcaption>
+      </figure>
+    </section>
+
+    <section class="wrap case-copy" aria-labelledby="why-title">
+      <p class="section-label"><b>02</b><i></i> WHY THIS EXISTS</p>
+      <div class="split"><h2 id="why-title">Shipping got faster.<br><em>Questions didn’t.</em></h2><div class="body-copy"><p>A client asks why the architecture changed. Someone spots a bug in the demo. Your teammate wants the backstory behind a decision.</p><p>The code is yours to own—even when an agent wrote the first draft. Howdunnit helps you find your footing, without pretending you memorized every diff.</p><small><i></i> NOT A DOC GENERATOR. A BETTER ANSWER WHEN IT’S YOUR TURN.</small></div></div>
+      <div class="questions"><article><small>EXHIBIT 01</small><h3>“Where does this flow start?”</h3><p>Get a project-grounded answer with the file it came from.</p></article><article><small>EXHIBIT 02</small><h3>“Why did we change this?”</h3><p>Search your code and Claude Code session history for the backstory.</p></article><article><small>EXHIBIT 03</small><h3>“Wait, where’s that handled?”</h3><p>Ask by voice in a meeting or type when you need a quieter assist.</p></article></div>
+    </section>
+
+    <section class="wrap method" id="method">
+      <p class="section-label"><b>03</b><i></i> THE METHOD</p>
+      <div class="method-heading"><h2>Find your footing.<br><em>Then show your work.</em></h2><p>No bot barging into the call. Just a small desktop sidekick, ready when you are.</p></div>
+      <div class="steps"><article><small>01</small><span class="step-icon folder"></span><h3>Point it at a project</h3><p>Howdunnit indexes your code and Claude Code history on your PC. No model tokens just to build the index.</p></article><article><small>02</small><span class="step-icon wave"><i></i><i></i><i></i><i></i><i></i></span><h3>Ask in the moment</h3><p>Type a question, or listen to system audio during a meeting after you give consent.</p></article><article><small>03</small><span class="step-icon source-icon">S1</span><h3>Follow the evidence</h3><p>Get a concise answer linked to the code or history behind it. If it can’t find support, it says so.</p></article></div>
+    </section>
+
+    <section class="privacy-band" id="privacy">
+      <div class="wrap privacy">
+        <p class="section-label"><b>04</b><i></i> NO HAND-WAVING</p>
+        <div class="method-heading"><h2>Local-first.<br><em>Not a black box.</em></h2><p>Here’s what stays on your PC—and what leaves it when you use the app.</p></div>
+        <div class="privacy-cards"><article><small>STAYS HERE <b>01</b></small><h3>Your project index</h3><p>Your code and Claude Code history are indexed and kept on your PC. The index is built locally.</p></article><article><small>WHEN YOU ASK <b>02</b></small><h3>Your question, with context</h3><p>Your question and a few redacted code or history excerpts go to the AI provider you choose. During a meeting, recent heard turns go too.</p></article><article><small>WHEN YOU LISTEN <b>03</b></small><h3>Audio, only while on</h3><p>After consent, system audio goes to Deepgram for speech-to-text while a meeting is active. The transcript stays in memory and is dropped when it ends.</p></article></div>
+        <div class="privacy-foot"><span><b>No account.</b> No telemetry. API keys encrypted by Windows.</span><span>With local Ollama as your only provider, questions stay on your PC. <a href="https://github.com/TehreemFarooqi/howdunnit/blob/main/docs/privacy-and-consent.md" target="_blank" rel="noreferrer">Read the full privacy details ↗</a></span></div>
+        <p class="consent">Meeting audio is a recording. Tell people you’re transcribing and follow your local consent laws.</p>
+      </div>
+    </section>
+
+    <section class="wrap final" id="build">
+      <p class="section-label"><b>05</b><i></i> THE NEXT CHAPTER</p>
+      <div class="final-layout"><div><small class="alpha"><i></i> PRE-ALPHA · BUILT IN THE OPEN</small><h2>Help us work<br><em>the case.</em></h2></div><div class="final-copy"><p>The first public Windows build is in progress. Follow along on GitHub and be there when the first testers get their hands on it.</p><a class="button" href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">Become an early tester <b aria-hidden="true">↗</b></a><small>FREE · OPEN SOURCE · FOLLOW THE BUILD</small></div></div>
+      <span class="open-stamp">CASE<br><b>OPEN</b></span>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="#top"><span class="mark">h<span>.</span></span> howdunnit</a><p>For when you don't know how you dunnit.</p><div><a href="https://github.com/TehreemFarooqi/howdunnit" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://github.com/TehreemFarooqi/howdunnit/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT license ↗</a></div><small>© 2026 HOWDUNNIT CONTRIBUTORS</small></footer>
+</body>
+</html>
