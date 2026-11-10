@@ -6,7 +6,7 @@ The static landing page for howdunnit, a free, open-source, local-first Windows 
 
 Open `index.html` directly, or serve this directory with any static file server. No build step or runtime dependencies are required.
 
-The page loads Bricolage Grotesque and Martian Mono from Google Fonts and embeds the early-access form hosted by Kit. The Kit form collects email addresses according to the signup form's settings; it also loads Kit's form script. No separate analytics are installed by this site.
+The page loads Bricolage Grotesque and Martian Mono from Google Fonts and embeds the launch-notification form hosted by Kit. The Kit form collects email addresses according to the signup form's settings; it also loads Kit's form script. A direct Kit signup link remains available if the embed does not load. No separate analytics are installed by this site.
 
 The Howdunnit logo asset in `assets/howdunnit-icon.png` is the supplied app icon.
 

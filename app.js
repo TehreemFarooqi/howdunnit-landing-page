@@ -1,51 +1,59 @@
-const stageTabs = [...document.querySelectorAll(".stage-tab")];
-const stagePanels = [...document.querySelectorAll(".stage-panel")];
+function setupTabs(tabList) {
+  const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+  const panels = tabs
+    .map((tab) => document.getElementById(tab.getAttribute("aria-controls")))
+    .filter(Boolean);
 
-function selectStage(index, moveFocus = false) {
-  const tab = stageTabs[index];
-  if (!tab) return;
+  function selectTab(index, moveFocus = false) {
+    const activeTab = tabs[index];
+    if (!activeTab) return;
 
-  stageTabs.forEach((item, itemIndex) => {
-    const active = itemIndex === index;
-    item.setAttribute("aria-selected", String(active));
-    item.tabIndex = active ? 0 : -1;
+    tabs.forEach((tab, tabIndex) => {
+      const active = tabIndex === index;
+      tab.setAttribute("aria-selected", String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+
+    panels.forEach((panel) => {
+      panel.hidden = panel.id !== activeTab.getAttribute("aria-controls");
+    });
+
+    if (moveFocus) activeTab.focus();
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(index));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft")
+        nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (nextIndex === undefined) return;
+      event.preventDefault();
+      selectTab(nextIndex, true);
+    });
   });
-
-  stagePanels.forEach((panel) => {
-    panel.hidden = panel.id !== tab.getAttribute("aria-controls");
-  });
-
-  if (moveFocus) tab.focus();
 }
 
-stageTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => selectStage(index));
-  tab.addEventListener("keydown", (event) => {
-    let nextIndex;
-    if (event.key === "ArrowRight") nextIndex = (index + 1) % stageTabs.length;
-    if (event.key === "ArrowLeft")
-      nextIndex = (index - 1 + stageTabs.length) % stageTabs.length;
-    if (event.key === "Home") nextIndex = 0;
-    if (event.key === "End") nextIndex = stageTabs.length - 1;
-    if (nextIndex === undefined) return;
-    event.preventDefault();
-    selectStage(nextIndex, true);
-  });
-});
+document.querySelectorAll('[role="tablist"]').forEach(setupTabs);
 
-const markedFrames = [...document.querySelectorAll(".hero-demo, .contact-sheet")];
-if ("IntersectionObserver" in window) {
-  const markerObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-marked");
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.3 },
-  );
-  markedFrames.forEach((frame) => markerObserver.observe(frame));
-} else {
-  markedFrames.forEach((frame) => frame.classList.add("is-marked"));
+const kitSignup = document.querySelector(".kit-signup");
+if (kitSignup) {
+  const setSubmitLabel = () => {
+    const label = kitSignup.querySelector(
+      '.formkit-submit span',
+    );
+    if (!label || label.textContent.trim() !== "Notify me!") return false;
+    label.textContent = "Notify me at launch";
+    return true;
+  };
+
+  if (!setSubmitLabel()) {
+    const observer = new MutationObserver(() => {
+      if (setSubmitLabel()) observer.disconnect();
+    });
+    observer.observe(kitSignup, { childList: true, subtree: true });
+  }
 }
