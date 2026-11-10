@@ -1,4 +1,4 @@
-# howdunnit — landing page
+# howdunnit | landing page
 
 The static landing page for howdunnit, a free, open-source, local-first Windows meeting sidekick for developers.
 
