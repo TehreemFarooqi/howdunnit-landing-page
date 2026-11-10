@@ -3,25 +3,34 @@ const SIGNUP_SHEET_NAME = "Signups";
 const SIGNUP_HEADERS = ["Submitted at", "Email"];
 
 function setupSignupSheet() {
-  const properties = PropertiesService.getScriptProperties();
-  const existingId = properties.getProperty(SIGNUP_SHEET_ID_PROPERTY);
-  if (existingId) {
-    const existing = SpreadsheetApp.openById(existingId);
-    console.log("Signup sheet is already set up: " + existing.getUrl());
-    return;
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  if (!spreadsheet) {
+    throw new Error(
+      "Open this script from the signup spreadsheet using Extensions > Apps Script.",
+    );
   }
 
-  const spreadsheet = SpreadsheetApp.create("Howdunnit launch signups");
-  const sheet = spreadsheet.getSheets()[0];
-  sheet.setName(SIGNUP_SHEET_NAME);
-  sheet.appendRow(SIGNUP_HEADERS);
-  sheet.setFrozenRows(1);
-  sheet.getRange(1, 1, 1, SIGNUP_HEADERS.length).setFontWeight("bold");
-  sheet.setColumnWidth(1, 180);
-  sheet.setColumnWidth(2, 320);
+  let sheet = spreadsheet.getSheetByName(SIGNUP_SHEET_NAME);
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(SIGNUP_SHEET_NAME);
+  }
 
+  const lastRow = sheet.getLastRow();
+  if (lastRow === 0) {
+    sheet.appendRow(SIGNUP_HEADERS);
+    sheet.setFrozenRows(1);
+  } else {
+    const headers = sheet.getRange(1, 1, 1, SIGNUP_HEADERS.length).getValues()[0];
+    if (SIGNUP_HEADERS.some((header, index) => headers[index] !== header)) {
+      throw new Error(
+        'The "Signups" tab already has content with unexpected headers. Rename or clear that tab before setup.',
+      );
+    }
+  }
+
+  const properties = PropertiesService.getScriptProperties();
   properties.setProperty(SIGNUP_SHEET_ID_PROPERTY, spreadsheet.getId());
-  console.log("Signup sheet created: " + spreadsheet.getUrl());
+  console.log("Signup sheet connected: " + spreadsheet.getUrl());
 }
 
 function doGet() {
