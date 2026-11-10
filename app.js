@@ -1,5 +1,5 @@
-const stageTabs = [...document.querySelectorAll("[data-stage]")];
-const stagePanels = [...document.querySelectorAll("[data-panel]")];
+const stageTabs = [...document.querySelectorAll(".stage-tab")];
+const stagePanels = [...document.querySelectorAll(".stage-panel")];
 
 function selectStage(index, moveFocus = false) {
   const tab = stageTabs[index];
@@ -12,7 +12,7 @@ function selectStage(index, moveFocus = false) {
   });
 
   stagePanels.forEach((panel) => {
-    panel.hidden = panel.dataset.panel !== tab.dataset.stage;
+    panel.hidden = panel.id !== tab.getAttribute("aria-controls");
   });
 
   if (moveFocus) tab.focus();
@@ -33,81 +33,19 @@ stageTabs.forEach((tab, index) => {
   });
 });
 
-const investigation = document.querySelector("[data-investigation]");
-if (investigation && "IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting) return;
-      investigation.classList.add("is-visible");
-      observer.disconnect();
-    },
-    { threshold: 0.18 },
-  );
-  observer.observe(investigation);
-} else {
-  investigation?.classList.add("is-visible");
-}
-
-const signupForm = document.querySelector("[data-signup-endpoint]");
-if (signupForm) {
-  const status = signupForm.querySelector(".form-status");
-  const submitButton = signupForm.querySelector('button[type="submit"]');
-
-  signupForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    status.textContent = "";
-    status.classList.remove("is-success");
-
-    if (!signupForm.reportValidity()) return;
-
-    const endpoint = signupForm.dataset.signupEndpoint.trim();
-    if (!endpoint) {
-      status.textContent =
-        "Early access signup isn't connected yet. Please check back soon.";
-      status.classList.add("is-error");
-      return;
-    }
-
-    let url;
-    try {
-      url = new URL(endpoint);
-    } catch {
-      status.textContent =
-        "Signup couldn't be completed. Please try again later.";
-      status.classList.add("is-error");
-      return;
-    }
-
-    if (url.protocol !== "https:") {
-      status.textContent =
-        "Signup couldn't be completed. Please try again later.";
-      status.classList.add("is-error");
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = "Sending…";
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        body: new FormData(signupForm),
-        headers: { Accept: "application/json" },
-        mode: "cors",
+const markedFrames = [...document.querySelectorAll(".hero-demo, .contact-sheet")];
+if ("IntersectionObserver" in window) {
+  const markerObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-marked");
+        observer.unobserve(entry.target);
       });
-
-      if (!response.ok) throw new Error("Signup request was rejected");
-      signupForm.reset();
-      status.textContent =
-        "You're on the list. We'll be in touch when the Windows alpha is ready.";
-      status.classList.add("is-success");
-    } catch {
-      status.textContent =
-        "Signup didn't go through. Please try again in a moment.";
-      status.classList.add("is-error");
-    } finally {
-      submitButton.disabled = false;
-      submitButton.innerHTML = 'Notify me <span aria-hidden="true">↗</span>';
-    }
-  });
+    },
+    { threshold: 0.3 },
+  );
+  markedFrames.forEach((frame) => markerObserver.observe(frame));
+} else {
+  markedFrames.forEach((frame) => frame.classList.add("is-marked"));
 }
