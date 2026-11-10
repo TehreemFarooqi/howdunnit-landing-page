@@ -283,17 +283,51 @@
         <div class="signup-copy">
           <h2 id="signup-title">Howdunnit is nearly ready.</h2>
           <p>Leave your email and we’ll let you know when the free, open-source Windows alpha launches.</p>
-          <span>Launch notification and essential release updates. Unsubscribe anytime.</span>
+          <span>We’ll use your email for Howdunnit launch updates. No automated emails.</span>
         </div>
         <div class="signup-form-area">
-          <div class="kit-signup" aria-label="Join the Howdunnit launch notification list">
-            <script async data-uid="3de3abb9ba" src="https://howdunnit.kit.com/3de3abb9ba/index.js"></script>
-            <noscript>
-              <a class="kit-fallback" href="https://howdunnit.kit.com/3de3abb9ba" target="_blank" rel="noreferrer">Open the signup form on Kit</a>
-            </noscript>
-          </div>
-          <a class="kit-fallback" href="https://howdunnit.kit.com/3de3abb9ba" target="_blank" rel="noreferrer">Form not loading? Sign up on Kit instead.</a>
-          <p class="kit-privacy">Kit handles the mailing list. See <a href="https://kit.com/privacy" target="_blank" rel="noreferrer">Kit’s privacy policy</a>.</p>
+          <form
+            class="signup-form"
+            id="signup-form"
+            data-endpoint=""
+            method="post"
+            target="signup-response"
+            aria-label="Join the Howdunnit launch notification list"
+          >
+            <div class="signup-fields">
+              <label class="visually-hidden" for="signup-email">Email address</label>
+              <input
+                id="signup-email"
+                name="email"
+                type="email"
+                placeholder="Email address"
+                autocomplete="email"
+                maxlength="254"
+                required
+              />
+              <button class="button button-primary" type="submit">Notify me at launch</button>
+            </div>
+            <label class="signup-honeypot" aria-hidden="true">
+              Leave this field empty
+              <input name="website" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+            <input name="token" type="hidden" />
+          </form>
+          <iframe
+            class="signup-response-frame"
+            id="signup-response"
+            name="signup-response"
+            title="Signup response"
+            hidden
+          ></iframe>
+          <p class="signup-status" id="signup-status" role="status" aria-live="polite" hidden></p>
+          <noscript>
+            <p class="signup-status" data-state="error">Enable JavaScript to join the launch list.</p>
+          </noscript>
+          <p class="signup-privacy">
+            Your email is stored in our private Google Sheet. See
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google’s privacy policy</a>.
+          </p>
         </div>
       </section>
     </main>
@@ -303,7 +337,7 @@
         <img src="./assets/howdunnit-icon.png" alt="" width="32" height="32" />
         <span>howdunnit</span>
       </a>
-      <span class="footer-license">Free · MIT licensed · Windows first</span>
+      <span class="footer-license">Free · MIT licensed</span>
     </footer>
   </body>
 </html>

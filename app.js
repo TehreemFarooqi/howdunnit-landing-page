@@ -39,51 +39,89 @@ function setupTabs(tabList) {
 
 document.querySelectorAll('[role="tablist"]').forEach(setupTabs);
 
-const kitSignup = document.querySelector(".kit-signup");
-if (kitSignup) {
-  const setSubmitLabel = () => {
-    const label = kitSignup.querySelector(
-      '.formkit-submit span',
-    );
-    if (!label || label.textContent.trim() !== "Notify me!") return false;
-    label.textContent = "Notify me at launch";
-    return true;
-  };
+const signupForm = document.querySelector("#signup-form");
+if (signupForm) {
+  const responseFrame = document.querySelector("#signup-response");
+  const status = document.querySelector("#signup-status");
+  const submitButton = signupForm.querySelector('button[type="submit"]');
+  const tokenInput = signupForm.elements.namedItem("token");
+  let pendingToken = "";
+  let timeoutId;
 
-  if (!setSubmitLabel()) {
-    const observer = new MutationObserver(() => {
-      if (setSubmitLabel()) observer.disconnect();
-    });
-    observer.observe(kitSignup, { childList: true, subtree: true });
+  function showSignupStatus(message, state) {
+    status.textContent = message;
+    status.dataset.state = state;
+    status.hidden = false;
   }
 
-  const showConfirmation = () => {
-    const alert = kitSignup.querySelector(
-      ".formkit-alert-success, .formkit-alert[data-element='success']",
-    );
-    if (!alert || !/confirm/i.test(alert.textContent)) return false;
+  function finishSignup(success) {
+    window.clearTimeout(timeoutId);
+    pendingToken = "";
+    submitButton.disabled = false;
+    if (success) {
+      showSignupStatus(
+        "You're on the list. We'll be in touch when Howdunnit is ready.",
+        "success",
+      );
+    } else {
+      showSignupStatus(
+        "We couldn't save your email. Please try again in a moment.",
+        "error",
+      );
+    }
+  }
 
-    const form = kitSignup.querySelector(".formkit-form");
-    if (form) form.insertAdjacentElement("afterend", alert);
-    alert.hidden = false;
-    alert.removeAttribute("aria-hidden");
-    alert.textContent = "You're on the list. Check your inbox to confirm.";
-    alert.classList.add("howdunnit-confirmation");
-    alert.setAttribute("role", "status");
-    alert.setAttribute("aria-live", "polite");
-    alert.setAttribute("aria-atomic", "true");
-    kitSignup.dataset.signupState = "success";
-    return true;
-  };
+  window.addEventListener("message", (event) => {
+    if (event.source !== responseFrame.contentWindow) return;
+    const response = event.data;
+    if (
+      !response ||
+      response.type !== "howdunnit-signup" ||
+      response.token !== pendingToken
+    ) {
+      return;
+    }
+    finishSignup(response.ok === true);
+  });
 
-  const successObserver = new MutationObserver(() => {
-    if (showConfirmation()) successObserver.disconnect();
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (pendingToken) return;
+
+    const endpoint = signupForm.dataset.endpoint.trim();
+    let parsedEndpoint;
+    try {
+      parsedEndpoint = new URL(endpoint);
+    } catch {
+      showSignupStatus(
+        "Signup isn't connected yet. Please check back soon.",
+        "error",
+      );
+      return;
+    }
+
+    if (
+      parsedEndpoint.protocol !== "https:" ||
+      parsedEndpoint.hostname !== "script.google.com" ||
+      !parsedEndpoint.pathname.includes("/macros/s/") ||
+      !parsedEndpoint.pathname.endsWith("/exec")
+    ) {
+      showSignupStatus(
+        "Signup isn't connected yet. Please check back soon.",
+        "error",
+      );
+      return;
+    }
+
+    pendingToken = crypto.randomUUID();
+    tokenInput.value = pendingToken;
+    signupForm.action = parsedEndpoint.href;
+    submitButton.disabled = true;
+    showSignupStatus("Adding you to the list…", "pending");
+
+    timeoutId = window.setTimeout(() => {
+      finishSignup(false);
+    }, 20000);
+    HTMLFormElement.prototype.submit.call(signupForm);
   });
-  successObserver.observe(kitSignup, {
-    attributes: true,
-    characterData: true,
-    childList: true,
-    subtree: true,
-  });
-  if (showConfirmation()) successObserver.disconnect();
 }
