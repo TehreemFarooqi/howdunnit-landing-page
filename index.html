@@ -188,9 +188,9 @@
                 <div class="source-material">
                   <div class="directory-tree">
                     <p class="tree-root"><span class="tree-branch" aria-hidden="true"></span> my-project /</p>
-                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> src / session-refresh.ts</p>
-                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> .git / recent changes</p>
-                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> Claude Code / conversations</p>
+                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> src / workers / email-worker.ts</p>
+                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> .git / dead-letter queue change</p>
+                    <p class="tree-child"><span class="tree-branch" aria-hidden="true"></span> Claude Code / retry-limit discussion</p>
                   </div>
                 </div>
                 <svg class="connect-arrow" viewBox="0 0 36 24" aria-hidden="true"><path d="M2 12h28m-8-8 8 8-8 8" /></svg>
@@ -205,18 +205,18 @@
             <div class="stage-panel" id="panel-understand" role="tabpanel" aria-labelledby="tab-understand" tabindex="0" hidden>
               <div class="stage-copy">
                 <h3>Get the context</h3>
-                <p>Connect your project once. Howdunnit works through its code, Git history and available Claude Code conversations to build a sourced understanding of how it works—and how it got there.</p>
+                <p>Howdunnit traces the worker’s retry logic through its Git changes and available Claude Code conversations, then links the explanation to each source.</p>
               </div>
               <div class="stage-art context-art" role="img" aria-label="Implementation, a Git change and a Claude Code explanation combine into a sourced answer">
                 <div class="context-sources">
-                  <div><span>Code</span><b>session refresh handler</b></div>
-                  <div><span>Commit</span><b>move refresh to backend</b></div>
-                  <div><span>Conversation</span><b>multi-tab logout debugging</b></div>
+                  <div><span>Code</span><b>email-worker.ts · max retries: 3</b></div>
+                  <div><span>Commit</span><b>move failed jobs to dead-letter queue</b></div>
+                  <div><span>Conversation</span><b>“Retries block the queue. Cap attempts at three, then set the job aside.”</b></div>
                 </div>
                 <svg class="context-arrow" viewBox="0 0 36 24" aria-hidden="true"><path d="M2 12h28m-8-8 8 8-8 8" /></svg>
                 <div class="context-result">
                   <span>WITH SOURCES</span>
-                  <b>Refresh moved so simultaneous requests can be coordinated.</b>
+                  <b>After three failed attempts, the worker moves the job to the dead-letter queue for review.</b>
                 </div>
               </div>
             </div>
@@ -233,8 +233,10 @@
                 </div>
                 <div class="meeting-answer-mini">
                   <div class="mini-titlebar"><img src="./assets/howdunnit-icon.png" alt="" width="22" height="22" /> howdunnit · Your private overlay</div>
-                  <b>After three failed attempts, the worker moves the job to a dead-letter queue for review.</b>
-                  <span>worker.ts · retry policy · dead-letter queue</span>
+                  <b>After three failed attempts, the worker moves the job to the dead-letter queue for review.</b>
+                  <span>Code · email-worker.ts · max retries: 3</span>
+                  <span>Commit · move failed jobs to dead-letter queue</span>
+                  <span>Claude Code · retry-limit discussion</span>
                 </div>
               </div>
             </div>
@@ -280,9 +282,9 @@
 
       <section class="signup-section section-shell" id="early-access" aria-labelledby="signup-title">
         <div class="signup-copy">
-          <h2 id="signup-title">Your next “quick question” is coming.</h2>
+          <h2 id="signup-title">Howdunnit is nearly ready.</h2>
           <p>Leave your email and we’ll let you know when the free, open-source Windows alpha launches.</p>
-          <span>Launch notification and essential release updates. Unsubscribe anytime. Promise!</span>
+          <span>Launch notification and essential release updates. Unsubscribe anytime.</span>
         </div>
         <div class="signup-form-area">
           <div class="kit-signup" aria-label="Join the Howdunnit launch notification list">

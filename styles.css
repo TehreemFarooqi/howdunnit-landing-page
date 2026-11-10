@@ -994,9 +994,15 @@ h3 {
   font-size: 12px !important;
 }
 
-.kit-signup .formkit-alert-success,
-.kit-signup .formkit-alert[data-element="success"] {
+.kit-signup .formkit-alert:not(.howdunnit-confirmation) {
+  color: var(--ink) !important;
+  font: 14px/1.45 var(--body) !important;
+}
+
+.kit-signup .howdunnit-confirmation {
+  display: block !important;
   margin: 0 !important;
+  margin-top: 12px !important;
   padding: 18px 20px !important;
   border: 1px solid #697a2f !important;
   border-left: 4px solid var(--lime) !important;
@@ -1008,15 +1014,7 @@ h3 {
   box-shadow: 0 12px 32px rgb(0 0 0 / 18%);
 }
 
-.kit-signup .formkit-alert-success::before,
-.kit-signup .formkit-alert[data-element="success"]::before {
-  content: "ONE LAST STEP";
-  display: block;
-  margin-bottom: 5px;
-  color: var(--lime);
-  font: 600 12px/1.3 var(--mono);
-  letter-spacing: 0.04em;
-}
+.kit-signup[data-signup-state="success"] + .kit-fallback { display: none; }
 
 .kit-fallback {
   display: inline-block;

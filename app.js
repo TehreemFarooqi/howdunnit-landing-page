@@ -57,16 +57,27 @@ if (kitSignup) {
     observer.observe(kitSignup, { childList: true, subtree: true });
   }
 
-  const successObserver = new MutationObserver(() => {
+  const showConfirmation = () => {
     const alert = kitSignup.querySelector(
       ".formkit-alert-success, .formkit-alert[data-element='success']",
     );
-    if (!alert || alert.hasAttribute("data-howdunnit-message")) return;
-    if (!/confirm/i.test(alert.textContent)) return;
+    if (!alert || !/confirm/i.test(alert.textContent)) return false;
 
-    alert.setAttribute("data-howdunnit-message", "true");
+    const form = kitSignup.querySelector(".formkit-form");
+    if (form) form.insertAdjacentElement("afterend", alert);
+    alert.hidden = false;
+    alert.removeAttribute("aria-hidden");
     alert.textContent = "You're on the list. Check your inbox to confirm.";
-    successObserver.disconnect();
+    alert.classList.add("howdunnit-confirmation");
+    alert.setAttribute("role", "status");
+    alert.setAttribute("aria-live", "polite");
+    alert.setAttribute("aria-atomic", "true");
+    kitSignup.dataset.signupState = "success";
+    return true;
+  };
+
+  const successObserver = new MutationObserver(() => {
+    if (showConfirmation()) successObserver.disconnect();
   });
   successObserver.observe(kitSignup, {
     attributes: true,
@@ -74,4 +85,5 @@ if (kitSignup) {
     childList: true,
     subtree: true,
   });
+  if (showConfirmation()) successObserver.disconnect();
 }
