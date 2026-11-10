@@ -56,4 +56,22 @@ if (kitSignup) {
     });
     observer.observe(kitSignup, { childList: true, subtree: true });
   }
+
+  const successObserver = new MutationObserver(() => {
+    const alert = kitSignup.querySelector(
+      ".formkit-alert-success, .formkit-alert[data-element='success']",
+    );
+    if (!alert || alert.hasAttribute("data-howdunnit-message")) return;
+    if (!/confirm/i.test(alert.textContent)) return;
+
+    alert.setAttribute("data-howdunnit-message", "true");
+    alert.textContent = "You're on the list. Check your inbox to confirm.";
+    successObserver.disconnect();
+  });
+  successObserver.observe(kitSignup, {
+    attributes: true,
+    characterData: true,
+    childList: true,
+    subtree: true,
+  });
 }

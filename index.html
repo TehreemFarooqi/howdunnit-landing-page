@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="AI-built code still comes with questions. Howdunnit brings your project and available Claude Code history into the meeting, with answers linked to their sources."
+      content="For when you don't know how you dunnit. Howdunnit brings project context into meetings in a private floating overlay."
     />
     <meta name="theme-color" content="#1c1e20" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="howdunnit — Explain the AI-built code you shipped" />
     <meta
       property="og:description"
-      content="Howdunnit brings your project and available Claude Code history into the meeting, with answers linked to their sources."
+      content="Howdunnit brings project context into meetings in a private floating overlay."
     />
     <meta property="og:url" content="https://tehreemfarooqi.github.io/howdunnit-landing-page/" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="howdunnit — Explain the AI-built code you shipped" />
     <meta
       name="twitter:description"
-      content="Your code, your coding history and the question in the room — connected in a floating meeting overlay."
+      content="Your project context, ready in your private floating meeting overlay."
     />
     <title>howdunnit — For when you don't know how you dunnit.</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -49,16 +49,15 @@
     <main id="main">
       <section class="hero section-shell" id="top" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <h1 id="hero-title">AI wrote it.<br />You shipped it.<br />Now explain it.</h1>
+          <h1 id="hero-title">For when you don't know how you dunnit.</h1>
           <div class="hero-description">
             <p>
               Your team wants you shipping at AI speed. Then comes “quick question”—and
               suddenly you’re expected to remember every implementation detail.
             </p>
             <p>
-              Howdunnit reads your code and available Claude Code conversations to help
-              you answer technical questions during meetings. Answers appear in your
-              private floating overlay, with links to the sources.
+              Howdunnit reads all relevant context to help you answer during meetings.
+              Answers appear in your private floating overlay.
             </p>
           </div>
           <div class="hero-actions">
@@ -72,10 +71,9 @@
             </a>
           </div>
           <p class="hero-facts">Free &amp; open source <span aria-hidden="true">·</span> Windows alpha coming soon</p>
-          <p class="hero-tagline">For when you don't know how you dunnit.</p>
         </div>
 
-        <div class="hero-demo" aria-label="Illustrative example of a meeting question answered in the Howdunnit overlay">
+        <div class="hero-demo" aria-label="Illustrative example of a meeting question answered in Howdunnit's private overlay">
           <p class="demo-caption">Illustrative example</p>
           <div class="meeting-question">
             <div class="meeting-heading">
@@ -91,7 +89,7 @@
             <div class="overlay-titlebar">
               <img src="./assets/howdunnit-icon.png" alt="" width="25" height="25" />
               <strong>howdunnit</strong>
-              <span>Your overlay</span>
+              <span>Your private overlay</span>
               <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
             <div class="overlay-content">
@@ -207,7 +205,7 @@
             <div class="stage-panel" id="panel-understand" role="tabpanel" aria-labelledby="tab-understand" tabindex="0" hidden>
               <div class="stage-copy">
                 <h3>Get the context</h3>
-                <p>Bring implementation and development history together, with project references you can check.</p>
+                <p>Connect your project once. Howdunnit works through its code, Git history and available Claude Code conversations to build a sourced understanding of how it works—and how it got there.</p>
               </div>
               <div class="stage-art context-art" role="img" aria-label="Implementation, a Git change and a Claude Code explanation combine into a sourced answer">
                 <div class="context-sources">
@@ -226,17 +224,17 @@
             <div class="stage-panel" id="panel-answer" role="tabpanel" aria-labelledby="tab-answer" tabindex="0" hidden>
               <div class="stage-copy">
                 <h3>Keep up with the meeting</h3>
-                <p>Someone asks a technical question. Howdunnit picks it up from meeting audio—or you type it in—and brings the answer into your floating overlay, with sources you can check.</p>
+                <p>Someone asks a technical question. Howdunnit picks it up from meeting audio and brings the answer into your private floating overlay, with sources you can check. Screen-capture Privacy Mode is controlled in the app.</p>
               </div>
-              <div class="stage-art meeting-art" role="img" aria-label="A meeting question is answered with project sources in a floating Howdunnit overlay">
+              <div class="stage-art meeting-art" role="img" aria-label="A meeting question is answered with project sources in Howdunnit's private floating overlay">
                 <div class="meeting-question-mini">
                   <span>In the meeting</span>
-                  <b>Why did token refresh move out of the frontend?</b>
+                  <b>What happens if a background job fails?</b>
                 </div>
                 <div class="meeting-answer-mini">
-                  <div class="mini-titlebar"><img src="./assets/howdunnit-icon.png" alt="" width="22" height="22" /> howdunnit · Your overlay</div>
-                  <b>Multiple tabs caused refresh collisions and logouts.</b>
-                  <span>session refresh handler · move refresh to backend</span>
+                  <div class="mini-titlebar"><img src="./assets/howdunnit-icon.png" alt="" width="22" height="22" /> howdunnit · Your private overlay</div>
+                  <b>After three failed attempts, the worker moves the job to a dead-letter queue for review.</b>
+                  <span>worker.ts · retry policy · dead-letter queue</span>
                 </div>
               </div>
             </div>
@@ -248,32 +246,33 @@
         <div class="section-shell">
           <div class="privacy-layout">
             <div class="privacy-copy">
-              <h2 id="privacy-title">Your project stays yours.</h2>
-              <p>
-                The project index stays on your PC. To answer a question, selected
-                redacted source excerpts can go to the AI provider you choose.
-              </p>
-              <p>
-                Bring your own API keys. Howdunnit is free and open source; AI and
-                transcription provider usage may cost extra.
-              </p>
-              <p>
-                While listening, meeting audio goes to your configured transcription
-                provider. Screen-capture Privacy Mode is controlled in the app.
-              </p>
-              <p class="consent-note">Meeting audio can include others. Get consent before transcribing.</p>
+              <h2 id="privacy-title">Your project. Your machine. Your call.</h2>
+              <p>Pick your AI provider. Bring your own keys. No Howdunnit account required.</p>
+              <p>Free, open-source software. Your AI and transcription providers may charge for usage.</p>
             </div>
-            <div class="privacy-boundary" aria-label="Illustrative data flow between your PC and providers you choose">
-              <div class="boundary-header">
-                <svg aria-hidden="true" viewBox="0 0 32 32"><rect x="4" y="5" width="24" height="17" rx="1" /><path d="M11 27h10m-5-5v5" /></svg>
-                <div><b>On your PC</b><span>Project index and API credentials</span></div>
-              </div>
+            <div class="privacy-boundary" role="group" aria-label="Data flow: project code and available history stay in a local index on your PC; selected excerpts and questions go to your AI provider; meeting audio goes to your transcription provider while listening">
               <div class="boundary-flow">
-                <div class="flow-local"><span>Project code + available history</span><b>Local index</b></div>
-                <div class="flow-remote"><span>Selected redacted excerpts + question</span><b>Your AI provider</b></div>
-                <div class="flow-remote"><span>PC audio while listening</span><b>Your transcription provider</b></div>
+                <div class="pc-boundary">
+                  <div class="pc-heading">
+                    <svg aria-hidden="true" viewBox="0 0 32 32"><rect x="4" y="5" width="24" height="17" rx="1" /><path d="M11 27h10m-5-5v5" /></svg>
+                    <b>Your PC</b>
+                  </div>
+                  <div class="pc-source">Project code + available history</div>
+                  <svg class="local-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v17m-7-7 7 7 7-7" /></svg>
+                  <div class="pc-index"><b>Local index</b></div>
+                </div>
+                <svg class="outbound-arrow arrow-ai" aria-hidden="true" viewBox="0 0 40 24"><path d="M2 12h32m-8-8 8 8-8 8" /></svg>
+                <div class="provider-box provider-ai">
+                  <b>Your AI provider</b>
+                  <span>Selected redacted excerpts + your question</span>
+                </div>
+                <svg class="outbound-arrow arrow-audio" aria-hidden="true" viewBox="0 0 40 24"><path d="M2 12h32m-8-8 8 8-8 8" /></svg>
+                <div class="provider-box provider-transcription">
+                  <b>Your transcription provider</b>
+                  <span>Meeting audio, while listening</span>
+                  <small>Get participants’ consent before transcribing.</small>
+                </div>
               </div>
-              <p class="boundary-note">No Howdunnit-hosted backend or account.</p>
             </div>
           </div>
         </div>
@@ -283,7 +282,7 @@
         <div class="signup-copy">
           <h2 id="signup-title">Your next “quick question” is coming.</h2>
           <p>Leave your email and we’ll let you know when the free, open-source Windows alpha launches.</p>
-          <span>Launch notification and essential release updates. Unsubscribe anytime.</span>
+          <span>Launch notification and essential release updates. Unsubscribe anytime. Promise!</span>
         </div>
         <div class="signup-form-area">
           <div class="kit-signup" aria-label="Join the Howdunnit launch notification list">
@@ -304,10 +303,6 @@
         <span>howdunnit</span>
       </a>
       <span class="footer-license">Free · MIT licensed · Windows first</span>
-      <a class="website-source" href="https://github.com/TehreemFarooqi/howdunnit-landing-page" target="_blank" rel="noreferrer">
-        Website source
-        <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M5 3h8v8m0-8L4 12" /></svg>
-      </a>
     </footer>
   </body>
 </html>
