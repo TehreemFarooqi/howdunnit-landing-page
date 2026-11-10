@@ -17,7 +17,7 @@ The Apps Script source in this public repository contains no spreadsheet ID, cre
 3. Replace the editor contents with `google-apps-script/Code.gs` and save.
 4. Select `setupSignupSheet` in the function menu and click **Run**. Review Google's authorization prompt. The function creates a `Signups` tab with `Submitted at` and `Email` columns if needed, then stores this spreadsheet's ID in the private script properties.
 5. Choose **Deploy > New deployment > Web app**. Set **Execute as** to **Me** and **Who has access** to **Anyone**, then deploy and authorize. **Anyone** applies only to the form-submission endpoint; the spreadsheet stays Restricted. The endpoint can append valid submitted email addresses, but cannot read or share the sheet. Do not publish the spreadsheet ID or change its sharing settings.
-6. Copy the web app URL ending in `/exec` and send it to the site maintainer so it can be added to `data-endpoint` on `#signup-form`. The endpoint URL is public and is not a credential.
+6. Put the deployed `/exec` URL in the `data-endpoint` attribute on `#signup-form` in `index.html`. The endpoint URL is public and is not a credential.
 7. Publish the site and submit a controlled test address. Confirm it appears once in the private `Signups` tab. The success state appears only after the Apps Script confirms the write.
 
 The form uses a hidden honeypot, validates addresses, and avoids adding the same address twice. If the endpoint is not configured or a save fails, it displays an error instead of claiming success. Submissions are stored for manual launch updates; the script does not send email. Since the endpoint is public, it can receive spam submissions; keep the sheet Restricted and review the signup list.

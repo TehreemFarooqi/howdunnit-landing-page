@@ -72,7 +72,19 @@ if (signupForm) {
   }
 
   window.addEventListener("message", (event) => {
-    if (event.source !== responseFrame.contentWindow) return;
+    let responseOrigin;
+    try {
+      responseOrigin = new URL(event.origin);
+    } catch {
+      return;
+    }
+
+    const trustedOrigin =
+      responseOrigin.protocol === "https:" &&
+      (responseOrigin.hostname === "script.google.com" ||
+        responseOrigin.hostname.endsWith("-script.googleusercontent.com"));
+    if (!trustedOrigin || !event.source || event.source === window) return;
+
     const response = event.data;
     if (
       !response ||
