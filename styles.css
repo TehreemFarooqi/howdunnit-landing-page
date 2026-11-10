@@ -985,19 +985,6 @@ h3 {
 .signup-status[data-state="error"] { border-color: #833c37; border-left-color: var(--red); }
 .signup-status[data-state="pending"] { border-left-color: #8d9297; }
 
-.signup-privacy {
-  margin: 9px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.signup-privacy a {
-  color: var(--ink);
-  text-decoration-color: var(--line);
-  text-underline-offset: 3px;
-}
-
-
 .site-footer {
   min-height: 100px;
   padding: 22px var(--page-gutter);
@@ -1011,8 +998,6 @@ h3 {
 .footer-brand { gap: 9px; font-size: 19px; }
 .footer-brand img { border-radius: 8px; }
 .footer-license { color: var(--muted); font-size: 14px; }
-
-.signup-privacy a:hover { text-decoration-color: var(--ink); }
 
 @media (min-width: 1440px) {
   .site-footer { padding-inline: max(var(--page-gutter), calc((100vw - var(--page-width)) / 2)); }
